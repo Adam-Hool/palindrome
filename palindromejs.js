@@ -1,5 +1,8 @@
+"use strict";
+
 var myPalindrome;
 var myPalindromeNoSpaces;
+var reversedPalindromeNoSpaces;
 
 function palindromeInput()
 {
@@ -13,35 +16,46 @@ function eliminateSpaces(palindrome)
 	console.log(palindrome);
 
 	var chars = palindrome.split('');
-
-	console.log(palindrome);
-    console.log(chars);
 	for(var i = 0; i < chars.length; i++)
     {
-    	
-        console.log(palindrome);
-        console.log(chars);
-    	console.log("eliminateSpaces above while loop");
-       if(chars.indexOf(' '))
+       if(chars[i]===" ")
         {
-        	console.log(palindrome);
-        	console.log(chars);
-        	console.log("eliminateSpaces in while loop");
-            chars.splice(chars[i],1);
+            chars.splice(i,1);
         }
         
     }
     return chars;
 }
 
-function checkIfPalindrome(myPalindromeNoSpaces1)
+function reversePalindrome(myPalindromeNoSpaces1)
+{ 
+	var reversedPalindrome;
+	console.log(reversedPalindrome, "not reversed");
+	reversedPalindrome=myPalindromeNoSpaces1.slice(0);
+	console.log(reversedPalindrome,"reversed")
+    
+	/*for(var i = 0; i < regPalindrome.length-1; i++)
+	{
+        reversedPalindrome[i]=regPalindrome[i];
+	}*/
+	reversedPalindrome.reverse();
+	console.log(reversedPalindrome," reversed palindrome in function")
+	return reversedPalindrome;
+}
+
+function checkIfPalindrome(myPalindromeNoSpaces1,reversedMyPalindromeNoSpaces1)
 {
 	var reverseChar;
-	reverseChar = myPalindromeNoSpaces1;
-	reverseChar.reverse();
-	console.log(reverseChar);
-	console.log(myPalindromeNoSpaces1);
-	if (myPalindromeNoSpaces1===reverseChar)
+	var regChar;
+    
+    
+	regChar=myPalindromeNoSpaces1;
+	reverseChar=reversedMyPalindromeNoSpaces1;
+
+    console.log(reverseChar, "reversedchar");
+    console.log(regChar, "regChar");
+
+	if (regChar===reverseChar)
 	{
 		console.log("this is a palindrome");
 	}
@@ -53,6 +67,7 @@ function checkIfPalindrome(myPalindromeNoSpaces1)
 
 	myPalindrome=palindromeInput();
 	myPalindromeNoSpaces=eliminateSpaces(myPalindrome);
-	checkIfPalindrome(myPalindromeNoSpaces);
+    reversedPalindromeNoSpaces=reversePalindrome(myPalindromeNoSpaces);
+	checkIfPalindrome(myPalindromeNoSpaces,reversedPalindromeNoSpaces);
 
 
